@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PKGRAPH", "PKGRAPH\PKGRAPH.csproj", "{E97DB3A2-9554-4835-BE55-CD6A0AB08C66}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{469A5778-FD59-472F-B967-E0F984607686}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E97DB3A2-9554-4835-BE55-CD6A0AB08C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97DB3A2-9554-4835-BE55-CD6A0AB08C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97DB3A2-9554-4835-BE55-CD6A0AB08C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97DB3A2-9554-4835-BE55-CD6A0AB08C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{469A5778-FD59-472F-B967-E0F984607686}.Debug|Any CPU.ActiveCfg = Debug
+		{469A5778-FD59-472F-B967-E0F984607686}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A772D86E-A227-4640-A941-984460C3AAA8}
+	EndGlobalSection
+EndGlobal

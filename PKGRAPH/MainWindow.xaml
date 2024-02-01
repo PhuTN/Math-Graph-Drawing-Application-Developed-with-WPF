@@ -1,0 +1,177 @@
+﻿<Window x:Class="PKGRAPH.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:PKGRAPH"
+        mc:Ignorable="d"
+        Title="PKGRAPH" Height="450" Width="800"
+        Icon="./Icon/pkgraph.ico"
+        WindowStyle="SingleBorderWindow"
+        Closing="WindowClosing"
+        >
+
+    <Grid x:Name="mainGrid" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" >
+            <materialDesign:DrawerHost x:Name="DrawerHost" BorderBrush="{DynamicResource MaterialDesignDivider}"  BorderThickness="2 ">
+                <Grid></Grid>
+                <materialDesign:DrawerHost.LeftDrawerContent >
+                    <StackPanel>
+                        <Button
+                                    Margin="4"
+                                    HorizontalAlignment="Stretch"
+                                    Style="{DynamicResource MaterialDesignFlatButton}" Click="OpenNewFileButtonClick" HorizontalContentAlignment ="Left">
+                            File mới
+                        </Button>
+                        <Button
+                                    Margin="4"
+                                    HorizontalAlignment="Stretch"
+                                    Style="{DynamicResource MaterialDesignFlatButton}" Click="OpenFileButtonClick" HorizontalContentAlignment ="Left">
+                            Mở file
+                        </Button>
+                        <Button
+                                    Margin="4"
+                                    HorizontalAlignment="Stretch"
+                                    Style="{DynamicResource MaterialDesignFlatButton}" Click="SaveFileButtonClick" HorizontalContentAlignment ="Left">
+                            Lưu file
+                        </Button>
+                        <Button
+                                    Margin="4"
+                                    HorizontalAlignment="Stretch"
+                                    Style="{DynamicResource MaterialDesignFlatButton}" Click="SaveNewFileButtonClick" HorizontalContentAlignment ="Left">
+                            Lưu file mới
+                        </Button>
+                    </StackPanel>
+                </materialDesign:DrawerHost.LeftDrawerContent>
+            </materialDesign:DrawerHost>
+        </Grid>
+        <Grid Grid.Column="1" MouseLeftButtonUp="MouseLeftDown">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.ColumnSpan="3">
+                <materialDesign:ColorZone
+                Mode="PrimaryDark"
+                Padding="5"
+                CornerRadius="3" >
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton x:Name="Toggle"  Click="ToggleButtonClick" Style="{DynamicResource MaterialDesignHamburgerToggleButton}" HorizontalContentAlignment="Left"/>
+                        <Button FontSize="10" Margin="5,0,5,0" Click="PlusButtonClick" Background="DarkViolet" >
+                            <materialDesign:PackIcon Kind="Plus" />
+                        </Button>
+                        <Button FontSize="10" Margin="0,0,5,0" Click="SaveButtonClick" Background="DarkViolet">
+                            <materialDesign:PackIcon Kind="LeadPencil" />
+                        </Button>
+                        
+                        <Button FontSize="10" Margin="0,0,5,0" Click="DeleteButtonClick" Background="DarkViolet">
+                            <materialDesign:PackIcon Kind="DeleteForever" />
+                        </Button>
+                        <Button FontSize="10" Margin="0,0,5,0" Click="UndoButtonClick" Background="DarkViolet">
+                            <materialDesign:PackIcon Kind="Undo" />
+                        </Button>
+                        <Button Name ="ColorButton"  FontSize="10" Margin="0,0,5,0" Click="ColorButtonClick" Background="DarkViolet">
+                            <materialDesign:PackIcon Kind="Circle" />
+                        </Button>
+                        <Button Name ="PointButton"  FontSize="10" Margin="0,0,5,0" Click="PointButtonClick" Background="DarkViolet">
+                            <materialDesign:PackIcon Kind="GestureTap" />
+                            
+                        </Button>
+                    </StackPanel>
+                </materialDesign:ColorZone>
+            </Grid>
+            <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*" MinWidth="215"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Name="Col">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <ListBox x:Name="graphsListView" Width="Auto" Height="Auto" Margin="2" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Stretch">
+                            
+                        </ListBox>
+                    </Grid>
+                    <Grid Grid.Row="1" >
+
+                        <Expander
+                        Header="Chú thích" ScrollViewer.HorizontalScrollBarVisibility="Auto" Background="AliceBlue" AutomationProperties.IsRowHeader="True" BorderThickness="0,0,0,1" >
+
+
+                            <UniformGrid Columns="3" Rows="1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="5,0,0,-30" >
+                                <TextBlock Text="Tên hàm" Margin="0 5 0 5"/>
+                                <TextBlock Text="Biểu thị toán học" Margin="0 5 0 5"/>
+                                <TextBlock Text="Chức năng" Margin="0 5 0 5"/>
+
+                                <TextBlock Text="Abs(x)"/>
+                                <TextBlock Text="|x|"/>
+                                <TextBlock Text="Trả về giá trị tuyệt đối của x"/>
+
+                                <TextBlock Text="Sqrt(x)"/>
+                                <TextBlock Text="√x"/>
+                                <TextBlock Text="Trả về giá trị là căn bậc 2 của x"/>
+
+
+                                <TextBlock Text="Pow(x, y)"/>
+                                <TextBlock Text="x^y"/>
+                                <TextBlock Text="Tính giá trị của x lũy thừa y"/>
+
+                                <TextBlock Text="Sin(x)"/>
+                                <TextBlock Text="sin(x)"/>
+                                <TextBlock Text="Tính giá trị sin(x) với đơn vị là radian"/>
+
+                                <TextBlock Text="Cos(x)"/>
+                                <TextBlock Text="cos(x)"/>
+                                <TextBlock Text="Tính giá trị cos(x) với đơn vị là radian"/>
+
+                                <TextBlock Text="Tan(x)"/>
+                                <TextBlock Text="tan(x)"/>
+                                <TextBlock Text="Tính giá trị tan(x) với đơn vị là radian"/>
+
+                                <TextBlock Text="Floor(x)"/>
+                                <TextBlock Text="⌊x⌋"/>
+                                <TextBlock Text="Trả về giá trị làm tròn xuống của x"/>
+
+                                <TextBlock Text="Log10(x)"/>
+                                <TextBlock Text="log10(x)"/>
+                                <TextBlock Text="Tính logarit cơ số 10 cho x"/>
+
+                                <TextBlock Text="Log(x, y)"/>
+                                <TextBlock Text="log_y(x)"/>
+                                <TextBlock Text="Tính logarit cơ số y cho x"/>
+
+                                <TextBlock Text="PI"/>
+                                <TextBlock Text="π"/>
+                                <TextBlock Text="Số pi"/>
+
+                                <TextBlock Text="E"/>
+                                <TextBlock Text="e"/>
+                                <TextBlock Text="Số e"/>
+                            </UniformGrid>
+                        </Expander>
+
+                    </Grid>
+                </Grid>
+                <GridSplitter
+                Grid.Column="1"
+                Width="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Stretch"
+                Background="Black"
+            />
+                <oxy:PlotView x:Name="myPlot"  Grid.Column="2" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
